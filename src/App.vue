@@ -2,23 +2,20 @@
   <div id="app">
     <Navbar></Navbar>
     <Sidenav></Sidenav>
-    <Progress></Progress>
-    <HelloWorld msg1="welcome"></HelloWorld>
+    <Canvas></Canvas>
   </div>
 </template>
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Navbar from "./components/navbar.vue";
 import Sidenav from "./components/sidenav.vue";
-import Progress from "./components/progress.vue";
+import Canvas from "./components/canvas.vue";
 
 export default {
   name: "App",
   components: {
-    Progress,
-    HelloWorld,
     Navbar,
-    Sidenav
+    Sidenav,
+    Canvas,
   },
   data() {
     return {

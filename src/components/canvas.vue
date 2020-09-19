@@ -1,5 +1,5 @@
 <template>
-  <div id="chartContainer"></div>
+  <div id="chartContainer" class="scaling"></div>
 </template>
 
 <script>
@@ -51,7 +51,7 @@ export default {
 <style>
 #chartContainer {
   height: 320px;
-  width: 95%;
+  width: 50%;
 }
 </style>
 

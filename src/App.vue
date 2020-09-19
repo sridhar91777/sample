@@ -3,12 +3,14 @@
     <Navbar></Navbar>
     <Sidenav></Sidenav>
     <Canvas></Canvas>
+    <Scaling></Scaling>
   </div>
 </template>
 <script>
 import Navbar from "./components/navbar.vue";
 import Sidenav from "./components/sidenav.vue";
 import Canvas from "./components/canvas.vue";
+import Scaling from "./components/scaling.vue";
 
 export default {
   name: "App",
@@ -16,13 +18,10 @@ export default {
     Navbar,
     Sidenav,
     Canvas,
+    Scaling,
   },
   data() {
-    return {
-      msg2: "testing123",
-      msg6: "second123",
-      msg7: 123,
-    };
+    return {};
   },
 };
 </script>
@@ -35,5 +34,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+.scaling {
+  min-height: 260px;
+  margin: 10px 10px 0 20px;
+  overflow-y: auto;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+h3 {
+  font-size: 16px !important;
 }
 </style>

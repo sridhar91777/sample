@@ -4,6 +4,9 @@
     <Sidenav></Sidenav>
     <Canvas></Canvas>
     <Scaling></Scaling>
+    <div class="threat_container">
+      <Threat v-for="(item, index) in data" :key="index" :threat="item"></Threat>
+    </div>
   </div>
 </template>
 <script>
@@ -11,6 +14,7 @@ import Navbar from "./components/navbar.vue";
 import Sidenav from "./components/sidenav.vue";
 import Canvas from "./components/canvas.vue";
 import Scaling from "./components/scaling.vue";
+import Threat from "./components/threat.vue";
 
 export default {
   name: "App",
@@ -19,9 +23,16 @@ export default {
     Sidenav,
     Canvas,
     Scaling,
+    Threat,
   },
   data() {
-    return {};
+    return {
+      data: [
+        { title: "Top Critical Threats", data: ["DESCRIPTION", "DESCRIPTION", "DESCRIPTION", "DESCRIPTION"] },
+        { title: "Top High Threats", data: ["DESCRIPTION", "DESCRIPTION"] },
+        { title: "Top Medium Threats", data: ["DESCRIPTION"] },
+      ],
+    };
   },
 };
 </script>
@@ -44,5 +55,8 @@ export default {
 }
 h3 {
   font-size: 16px !important;
+}
+.threat_container {
+  padding-left: 43px;
 }
 </style>

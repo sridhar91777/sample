@@ -9,7 +9,7 @@ CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 export default {
   name: "Canvas",
   el: "#vue-container",
-  props: {},
+  props: { index: Number },
   data() {
     return {
       chartOptions: {
@@ -39,11 +39,28 @@ export default {
       chart: null,
     };
   },
+  watch: {
+    index() {
+      this.generateCanvas();
+    },
+  },
+  methods: {
+    generateCanvas() {
+      if (this.index) {
+        this.chartOptions.data[0].dataPoints.forEach((item) => {
+          item.x = Math.floor(Math.random() * 100 + 1);
+          item.y = Math.floor(Math.random() * 100 + 1);
+        });
+      }
+      this.chart = new CanvasJS.Chart("chartContainer", this.chartOptions);
+      this.chart.render();
+      document.getElementsByClassName(
+        "canvasjs-chart-credit"
+      )[0].style.display = "none";
+    },
+  },
   mounted() {
-    this.chart = new CanvasJS.Chart("chartContainer", this.chartOptions);
-    this.chart.render();
-    document.getElementsByClassName("canvasjs-chart-credit")[0].style.display =
-      "none";
+    this.generateCanvas();
   },
 };
 </script>

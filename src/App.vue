@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <Sidenav></Sidenav>
-    <Canvas></Canvas>
+    <Sidenav @onSelected="onSelectionChange"></Sidenav>
+    <Canvas :index="selectedIndex"></Canvas>
     <Scaling></Scaling>
     <div class="threat_container">
       <Threat v-for="(item, index) in data" :key="index" :threat="item"></Threat>
@@ -28,11 +28,23 @@ export default {
   data() {
     return {
       data: [
-        { title: "Top Critical Threats", data: ["DESCRIPTION", "DESCRIPTION", "DESCRIPTION", "DESCRIPTION"] },
+        {
+          title: "Top Critical Threats",
+          data: ["DESCRIPTION", "DESCRIPTION", "DESCRIPTION", "DESCRIPTION"],
+        },
         { title: "Top High Threats", data: ["DESCRIPTION", "DESCRIPTION"] },
         { title: "Top Medium Threats", data: ["DESCRIPTION"] },
       ],
+      selectedValue: "",
+      selectedIndex: 0,
     };
+  },
+  methods: {
+    onSelectionChange(value, index) {
+      console.log(index);
+      this.selectedValue = value;
+      this.selectedIndex = index;
+    },
   },
 };
 </script>

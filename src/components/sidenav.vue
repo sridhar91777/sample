@@ -10,8 +10,13 @@
               @open="handleOpen"
               @close="handleClose"
             >
-              <el-menu-item :index="index" v-for="(item, index) in sideNavData" :key="index">
-                <span>{{item}}</span>
+              <el-menu-item
+                :index="index"
+                v-for="(item, index) in sideNavData"
+                :key="index"
+                @click="setSelected(item, index)"
+              >
+                <span>{{item.title}}</span>
               </el-menu-item>
             </el-menu>
           </el-col>
@@ -31,19 +36,23 @@ export default {
     return {
       mockData: "",
       sideNavData: [
-        "Overall",
-        "Brand Watch",
-        "DNS Watch",
-        "Domain Watch",
-        "Info Leak Watch",
-        "Phish Watch",
-        "VIP Watch",
+        { key: "ovr", title: "Overall" },
+        { key: "brd", title: "Brand Watch" },
+        { key: "dns", title: "DNS Watch" },
+        { key: "dom", title: "Domain Watch" },
+        { key: "inf", title: "Info Leak Watch" },
+        { key: "phs", title: "Phish Watch" },
+        { key: "vip", title: "VIP Watch" },
       ],
     };
   },
   methods: {
     handleOpen() {},
     handleClose() {},
+    setSelected(item, index) {
+      console.log(item);
+      this.$emit('onSelected', item.key, index);
+    },
   },
   mounted() {},
 };

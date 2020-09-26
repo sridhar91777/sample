@@ -3,13 +3,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 var CanvasJS = require("../assets/canvasjs.min.js");
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;
 
 export default {
   name: "Canvas",
   el: "#vue-container",
-  props: { index: Number },
+  // props: { index: Number },
   data() {
     return {
       chartOptions: {
@@ -43,6 +44,12 @@ export default {
     index() {
       this.generateCanvas();
     },
+  },
+  computed: {
+    ...mapState({
+      count: (state) => state.common.count,
+      index: (state) => state.common.selectedIndex,
+    }),
   },
   methods: {
     generateCanvas() {

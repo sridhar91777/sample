@@ -51,7 +51,8 @@ export default {
     handleClose() {},
     setSelected(item, index) {
       console.log(item);
-      this.$emit('onSelected', item.key, index);
+      this.$store.dispatch('setIndex', index);
+      // this.$emit('onSelected', item.key, index);
     },
   },
   mounted() {},
